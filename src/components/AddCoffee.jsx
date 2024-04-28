@@ -18,8 +18,9 @@ const AddCoffee = () => {
         const taste = form.taste.value
         const category = form.category.value
         const details = form.details.value
+        const photo = form.photo.value
 
-        const newCoffee = {name, chef, supplier, taste, category, details}
+        const newCoffee = {name, chef, supplier, taste, category, details,photo}
         console.log(newCoffee);
 
         fetch("http://localhost:5000/coffee",{
@@ -72,6 +73,14 @@ const AddCoffee = () => {
                 <Input label="Enter Details" name="details" className="" />
             </div>
         </div>
+        <div className=" flex justify-center items-center gap-6 my-12 px-64">
+            <div className="w-full space-y-6">
+                <label htmlFor="">Photo</label>
+                <Input label="Enter Photo URL" name="photo" className="" />
+            </div>
+        </div>
+        
+        
         <div className=" flex justify-center items-center px-64">
         <Button type="submit" className=" w-full ">Add Coffee</Button>
         </div>
