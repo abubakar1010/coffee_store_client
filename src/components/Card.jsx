@@ -2,7 +2,7 @@ import { Button } from "@material-tailwind/react";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
-const Card = ({coffee}) => {
+const Card = ({coffee, coffees, setCoffees}) => {
     const {_id, name, chef, supplier, photo} = coffee
 
     const handleDelete = (id) => {
@@ -13,7 +13,10 @@ const Card = ({coffee}) => {
         .then( res => res.json())
         .then( data => {
             console.log(data)
+            const remaining = coffees.filter( item => item._id != id )
+            setCoffees(remaining)
         })
+        
     }
     return (
         <div className=" flex items-center gap-12">
@@ -35,7 +38,9 @@ const Card = ({coffee}) => {
 };
 
 Card.propTypes = {
-    coffee: PropTypes.object
+    coffee: PropTypes.object,
+    coffees: PropTypes.array,
+    setCoffees: PropTypes.func
 }
 
 export default Card;
